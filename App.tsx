@@ -1,5 +1,12 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, View, Button, ScrollView } from "react-native";
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Button,
+  ScrollView,
+} from 'react-native';
 
 const App = () => {
   const [courseCounts, setCourseCounts] = useState({
@@ -16,8 +23,8 @@ const App = () => {
     year4: [],
   });
 
-  const handleOkPress = (year) => {
-    const fields = [];
+  const handleOkPress = (year: string) => {
+    const fields: React.JSX.Element[] = [];
     for (let i = 0; i < courseCounts[year]; i++) {
       fields.push(
         <TextInput
@@ -25,7 +32,7 @@ const App = () => {
           style={styles.inputText}
           placeholder={`Course ${i + 1}`}
           placeholderTextColor="white"
-        />
+        />,
       );
     }
     setTextFields(prevTextFields => ({
@@ -34,7 +41,7 @@ const App = () => {
     }));
   };
 
-  const handleCountChange = (year, value) => {
+  const handleCountChange = (year: string, value: string) => {
     setCourseCounts(prevCounts => ({
       ...prevCounts,
       [year]: parseInt(value) || 0,
@@ -48,10 +55,11 @@ const App = () => {
       </View>
       <View style={styles.firstSentContainer}>
         <Text style={styles.firstSentence}>
-          You can enter your results and see GPA according to your degree program
+          You can enter your results and see GPA according to your degree
+          program
         </Text>
       </View>
-      {[1, 2, 3, 4].map((year) => (
+      {[1, 2, 3, 4].map(year => (
         <View key={year}>
           <View style={styles.yearContainer}>
             <Text style={styles.yearText}>For year {year}</Text>
@@ -62,13 +70,10 @@ const App = () => {
               placeholder="Enter number of courses"
               placeholderTextColor="white"
               keyboardType="numeric"
-              onChangeText={(text) => handleCountChange(`year${year}`, text)}
+              onChangeText={text => handleCountChange(`year${year}`, text)}
             />
-            <View style={{ width: 70 }}>
-              <Button
-                title="OK"
-                onPress={() => handleOkPress(`year${year}`)}
-              />
+            <View style={{width: 70}}>
+              <Button title="OK" onPress={() => handleOkPress(`year${year}`)} />
             </View>
           </View>
           <View style={styles.userValueContainer}>
@@ -145,7 +150,7 @@ const styles = StyleSheet.create({
   },
   inputText: {
     borderWidth: 1,
-    width: "100%",
+    width: '100%',
     padding: 10,
     marginBottom: 10,
   },

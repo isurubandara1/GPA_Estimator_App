@@ -23,8 +23,8 @@ const App = () => {
     year4: [],
   });
 
-  const handleOkPress = (year: string) => {
-    const fields: React.JSX.Element[] = [];
+  const handleOkPress = (year) => {
+    const fields = [];
     for (let i = 0; i < courseCounts[year]; i++) {
       fields.push(
         <TextInput
@@ -41,7 +41,7 @@ const App = () => {
     }));
   };
 
-  const handleCountChange = (year: string, value: string) => {
+  const handleCountChange = (year, value) => {
     setCourseCounts(prevCounts => ({
       ...prevCounts,
       [year]: parseInt(value) || 0,
@@ -69,7 +69,7 @@ const App = () => {
               <TextInput
                 style={styles.firstTextInput}
                 placeholder="Enter number of courses"
-                placeholderTextColor="white"
+                placeholderTextColor="grey"
                 keyboardType="numeric"
                 onChangeText={text => handleCountChange(`year${year}`, text)}
               />
@@ -139,16 +139,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
+    marginBottom:5,
+    marginTop:5,
   },
   firstTextInput: {
     borderWidth: 2,
     borderRadius: 5,
     borderColor: 'white',
-    width: '50%',
-    fontSize: 12,
+    width: '30%',
+    fontSize: 15,
     color: 'white',
     textAlign: 'center',
     marginRight: 30,
+    
   },
   scrollViewContent: {
     flexGrow: 1,

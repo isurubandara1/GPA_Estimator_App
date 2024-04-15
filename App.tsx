@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 
 const App = () => {
   return (
@@ -13,8 +13,14 @@ const App = () => {
           programm
         </Text>
       </View>
-      <View style={styles.yearContainer}>
-        <Text style={styles.yearText}>For first year(1)</Text>
+      <View>
+        <View style={styles.yearContainer}>
+          <Text style={styles.yearText}>For first year(1)</Text>
+        </View>
+        <View style={styles.userValueContainer}>
+          <TextInput style={styles.firstTextInput} />
+          <Button title="OK" onPress={() => {}} />
+        </View>
       </View>
       <View style={styles.yearContainer}>
         <Text style={styles.yearText}>For second year(2)</Text>
@@ -70,6 +76,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontStyle: 'italic',
   },
+  userValueContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  firstTextInput: {
+    borderWidth: 2,
+    borderRadius: 5,
+    borderColor: 'white',
+  },
+  firstButton: {},
 });
 
 export default App;

@@ -1,7 +1,46 @@
-import React from 'react';
-import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
+import React, { useState } from "react";
+import { StyleSheet, Text, TextInput, View, Button, ScrollView } from "react-native";
 
 const App = () => {
+  const [courseCounts, setCourseCounts] = useState({
+    year1: 0,
+    year2: 0,
+    year3: 0,
+    year4: 0,
+  });
+
+  const [textFields, setTextFields] = useState({
+    year1: [],
+    year2: [],
+    year3: [],
+    year4: [],
+  });
+
+  const handleOkPress = (year) => {
+    const fields = [];
+    for (let i = 0; i < courseCounts[year]; i++) {
+      fields.push(
+        <TextInput
+          key={i}
+          style={styles.inputText}
+          placeholder={`Course ${i + 1}`}
+          placeholderTextColor="white"
+        />
+      );
+    }
+    setTextFields(prevTextFields => ({
+      ...prevTextFields,
+      [year]: fields,
+    }));
+  };
+
+  const handleCountChange = (year, value) => {
+    setCourseCounts(prevCounts => ({
+      ...prevCounts,
+      [year]: parseInt(value) || 0,
+    }));
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.topicContainer}>
@@ -9,34 +48,36 @@ const App = () => {
       </View>
       <View style={styles.firstSentContainer}>
         <Text style={styles.firstSentence}>
-          You can enter your results and see GPA accourding to your degree
-          programm
+          You can enter your results and see GPA according to your degree program
         </Text>
       </View>
-      <View>
-        <View style={styles.yearContainer}>
-          <Text style={styles.yearText}>For first year(1)</Text>
-        </View>
-        <View style={styles.userValueContainer}>
-          <TextInput
-            style={styles.firstTextInput}
-            placeholder="Enter number of courses"
-            placeholderTextColor="white"
-          />
-          <View style={{width: 70}}>
-            <Button title="OK" onPress={() => {}} />
+      {[1, 2, 3, 4].map((year) => (
+        <View key={year}>
+          <View style={styles.yearContainer}>
+            <Text style={styles.yearText}>For year {year}</Text>
+          </View>
+          <View style={styles.userValueContainer}>
+            <TextInput
+              style={styles.firstTextInput}
+              placeholder="Enter number of courses"
+              placeholderTextColor="white"
+              keyboardType="numeric"
+              onChangeText={(text) => handleCountChange(`year${year}`, text)}
+            />
+            <View style={{ width: 70 }}>
+              <Button
+                title="OK"
+                onPress={() => handleOkPress(`year${year}`)}
+              />
+            </View>
+          </View>
+          <View style={styles.userValueContainer}>
+            <ScrollView contentContainerStyle={styles.scrollViewContent}>
+              {textFields[`year${year}`]}
+            </ScrollView>
           </View>
         </View>
-      </View>
-      <View style={styles.yearContainer}>
-        <Text style={styles.yearText}>For second year(2)</Text>
-      </View>
-      <View style={styles.yearContainer}>
-        <Text style={styles.yearText}>For third year(3)</Text>
-      </View>
-      <View style={styles.yearContainer}>
-        <Text style={styles.yearText}>For forth year(4)</Text>
-      </View>
+      ))}
     </View>
   );
 };
@@ -80,8 +121,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   yearText: {
-    fontSize: 20,
+    fontSize: 25,
     fontStyle: 'italic',
+    color: 'yellow',
   },
   userValueContainer: {
     alignItems: 'center',
@@ -98,8 +140,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginRight: 30,
   },
-  firstButton: {
-    width: 200,
+  scrollViewContent: {
+    flexGrow: 1,
+  },
+  inputText: {
+    borderWidth: 1,
+    width: "100%",
+    padding: 10,
+    marginBottom: 10,
   },
 });
 

@@ -18,8 +18,14 @@ const App = () => {
           <Text style={styles.yearText}>For first year(1)</Text>
         </View>
         <View style={styles.userValueContainer}>
-          <TextInput style={styles.firstTextInput} />
-          <Button title="OK" onPress={() => {}} />
+          <TextInput
+            style={styles.firstTextInput}
+            placeholder="Enter number of courses"
+            placeholderTextColor="white"
+          />
+          <View style={{width: 70}}>
+            <Button title="OK" onPress={() => {}} />
+          </View>
         </View>
       </View>
       <View style={styles.yearContainer}>
@@ -38,6 +44,7 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    margin: 10,
   },
   text: {
     fontSize: 24,
@@ -79,13 +86,21 @@ const styles = StyleSheet.create({
   userValueContainer: {
     alignItems: 'center',
     flexDirection: 'row',
+    justifyContent: 'center',
   },
   firstTextInput: {
     borderWidth: 2,
     borderRadius: 5,
     borderColor: 'white',
+    width: '50%',
+    fontSize: 12,
+    color: 'white',
+    textAlign: 'center',
+    marginRight: 30,
   },
-  firstButton: {},
+  firstButton: {
+    width: 200,
+  },
 });
 
 export default App;

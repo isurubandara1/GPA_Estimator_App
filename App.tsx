@@ -59,30 +59,35 @@ const App = () => {
           program
         </Text>
       </View>
-      {[1, 2, 3, 4].map(year => (
-        <View key={year}>
-          <View style={styles.yearContainer}>
-            <Text style={styles.yearText}>For year {year}</Text>
-          </View>
-          <View style={styles.userValueContainer}>
-            <TextInput
-              style={styles.firstTextInput}
-              placeholder="Enter number of courses"
-              placeholderTextColor="white"
-              keyboardType="numeric"
-              onChangeText={text => handleCountChange(`year${year}`, text)}
-            />
-            <View style={{width: 70}}>
-              <Button title="OK" onPress={() => handleOkPress(`year${year}`)} />
+      <ScrollView>
+        {[1, 2, 3, 4].map(year => (
+          <View key={year}>
+            <View style={styles.yearContainer}>
+              <Text style={styles.yearText}>For year {year}</Text>
+            </View>
+            <View style={styles.userValueContainer}>
+              <TextInput
+                style={styles.firstTextInput}
+                placeholder="Enter number of courses"
+                placeholderTextColor="white"
+                keyboardType="numeric"
+                onChangeText={text => handleCountChange(`year${year}`, text)}
+              />
+              <View style={{width: 70}}>
+                <Button
+                  title="OK"
+                  onPress={() => handleOkPress(`year${year}`)}
+                />
+              </View>
+            </View>
+            <View style={styles.userValueContainer}>
+              <ScrollView contentContainerStyle={styles.scrollViewContent}>
+                {textFields[`year${year}`]}
+              </ScrollView>
             </View>
           </View>
-          <View style={styles.userValueContainer}>
-            <ScrollView contentContainerStyle={styles.scrollViewContent}>
-              {textFields[`year${year}`]}
-            </ScrollView>
-          </View>
-        </View>
-      ))}
+        ))}
+      </ScrollView>
     </View>
   );
 };

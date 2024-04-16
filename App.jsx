@@ -10,19 +10,6 @@ import {
 
 const App = () => {
 
-  var APlus = 2; 
-  var A = 2; 
-  var AMin = 2; 
-  var BPlus = 2; 
-  var B = 2; 
-  var BMin = 2; 
-  var CPlus = 2; 
-  var C = 2; 
-  var CMin = 2; 
-  var Dplus = 2; 
-  var D = 2; 
-  var DMin = 2; 
-  var E = 2; 
   const [courseCounts, setCourseCounts] = useState({
     year1: 0,
     year2: 0,
@@ -36,6 +23,20 @@ const App = () => {
     year3: [],
     year4: [],
   });
+
+  const [Aplus, setAplus] = useState('');
+  const [A, setA] = useState('');
+  const [Amin, setAmin] = useState('');
+  const [Bplus, setBplus] = useState('');
+  const [B, setB] = useState('');
+  const [Bmin, setBmin] = useState('');
+  const [Cplus, setCplus] = useState('');
+  const [C, setC] = useState('');
+  const [Cmin, setCmin] = useState('');
+  const [Dplus, setDplus] = useState('');
+  const [D, setD] = useState('');
+  const [Dmin, setDmin] = useState('');
+  const [E, setE] = useState('');
 
   const handleOkPress = (year) => {
     const fields = [];
@@ -83,12 +84,14 @@ const App = () => {
                 placeholderTextColor="white"
                 keyboardType="numeric"
                 autoFocus={true}
+                onChangeText={setAplus}
               />
               <Text  style={styles.gpaListText}>A </Text>
            <TextInput
                 style={styles.gpaTextInput}
                 placeholderTextColor="grey"
                 keyboardType="numeric"
+                onChangeText={setA}
               />
         </View>
         <View style={styles.gpaListcontainer}>
@@ -97,12 +100,14 @@ const App = () => {
                 style={styles.gpaTextInput}
                 placeholderTextColor="grey"
                 keyboardType="numeric"
+                onChangeText={setAmin}
               />
               <Text  style={styles.gpaListText}>B+</Text>
            <TextInput
                 style={styles.gpaTextInput}
                 placeholderTextColor="grey"
                 keyboardType="numeric"
+                onChangeText={setBplus}
               />
         </View>
         <View style={styles.gpaListcontainer}>
@@ -111,12 +116,14 @@ const App = () => {
                 style={styles.gpaTextInput}
                 placeholderTextColor="grey"
                 keyboardType="numeric"
+                onChangeText={setB}
               />
               <Text  style={styles.gpaListText}> B-</Text>
            <TextInput
                 style={styles.gpaTextInput}
                 placeholderTextColor="grey"
                 keyboardType="numeric"
+                onChangeText={setBmin}
               />
         </View>
         <View style={styles.gpaListcontainer}>
@@ -125,12 +132,14 @@ const App = () => {
                 style={styles.gpaTextInput}
                 placeholderTextColor="grey"
                 keyboardType="numeric"
+                onChangeText={setCplus}
               />
               <Text  style={styles.gpaListText}>C  </Text>
            <TextInput
                 style={styles.gpaTextInput}
                 placeholderTextColor="grey"
                 keyboardType="numeric"
+                onChangeText={setC}
               />
         </View>
         <View style={styles.gpaListcontainer}>
@@ -139,12 +148,14 @@ const App = () => {
                 style={styles.gpaTextInput}
                 placeholderTextColor="grey"
                 keyboardType="numeric"
+                onChangeText={setCmin}
               />
               <Text  style={styles.gpaListText}>D+</Text>
            <TextInput
                 style={styles.gpaTextInput}
                 placeholderTextColor="grey"
                 keyboardType="numeric"
+                onChangeText={setDplus}
               />
         </View>
         <View style={styles.gpaListcontainer}>
@@ -153,12 +164,14 @@ const App = () => {
                 style={styles.gpaTextInput}
                 placeholderTextColor="grey"
                 keyboardType="numeric"
+                onChangeText={setD}
               />
               <Text  style={styles.gpaListText}>D-</Text>
            <TextInput
                 style={styles.gpaTextInput}
                 placeholderTextColor="grey"
                 keyboardType="numeric"
+                onChangeText={setDmin}
               />
         </View>
         <View style={styles.gpaListcontainer}>
@@ -167,6 +180,7 @@ const App = () => {
                 style={styles.gpaTextInput}
                 placeholderTextColor="grey"
                 keyboardType="numeric"
+                onChangeText={setE}
               />
         </View>
         
@@ -199,7 +213,10 @@ const App = () => {
               </ScrollView>
             </View>
           </View>
+          
         ))}
+        <Button title='view GPA'/>
+        <Text>your gpa is</Text>
       </ScrollView>
     </View>
   );

@@ -9,6 +9,20 @@ import {
 } from 'react-native';
 
 const App = () => {
+
+  var APlus = 2; 
+  var A = 2; 
+  var AMin = 2; 
+  var BPlus = 2; 
+  var B = 2; 
+  var BMin = 2; 
+  var CPlus = 2; 
+  var C = 2; 
+  var CMin = 2; 
+  var Dplus = 2; 
+  var D = 2; 
+  var DMin = 2; 
+  var E = 2; 
   const [courseCounts, setCourseCounts] = useState({
     year1: 0,
     year2: 0,
@@ -60,6 +74,96 @@ const App = () => {
         </Text>
       </View>
       <ScrollView>
+      <View>
+        <View style={styles.gpaListcontainer}>
+          <Text style={styles.gpaListText}>A+</Text>
+           <TextInput
+                style={styles.gpaTextInput}
+                placeholder="Enter number of courses"
+                placeholderTextColor="grey"
+                keyboardType="numeric"
+              />
+              <Text style={styles.gpaListText}>B-</Text>
+           <TextInput
+                style={styles.gpaTextInput}
+                placeholder="Enter number of courses"
+                placeholderTextColor="grey"
+                keyboardType="numeric"
+              />
+        </View>
+        <View style={styles.gpaListcontainer}>
+          <Text style={styles.gpaListText}>A</Text>
+           <TextInput
+                style={styles.gpaTextInput}
+                placeholder="Enter number of courses"
+                placeholderTextColor="grey"
+                keyboardType="numeric"
+              />
+        </View>
+        <View style={styles.gpaListcontainer}>
+          <Text  style={styles.gpaListText}>A-</Text>
+           <TextInput
+                style={styles.gpaTextInput}
+                placeholder="Enter number of courses"
+                placeholderTextColor="grey"
+                keyboardType="numeric"
+              />
+        </View>
+        <View style={styles.gpaListcontainer}>
+          <Text style={styles.gpaListText}>B+</Text>
+           <TextInput
+                style={styles.gpaTextInput}
+                placeholder="Enter number of courses"
+                placeholderTextColor="grey"
+                keyboardType="numeric"
+              />
+        </View>
+        <View style={styles.gpaListcontainer}>
+          <Text style={styles.gpaListText}>B</Text>
+           <TextInput
+                style={styles.gpaTextInput}
+                placeholder="Enter number of courses"
+                placeholderTextColor="grey"
+                keyboardType="numeric"
+              />
+        </View>
+        <View style={styles.gpaListcontainer}>
+          <Text style={styles.gpaListText}>B-</Text>
+           <TextInput
+                style={styles.gpaTextInput}
+                placeholder="Enter number of courses"
+                placeholderTextColor="grey"
+                keyboardType="numeric"
+              />
+        </View>
+        <View style={styles.gpaListcontainer}>
+          <Text style={styles.gpaListText}>C+</Text>
+           <TextInput
+                style={styles.gpaTextInput}
+                placeholder="Enter number of courses"
+                placeholderTextColor="grey"
+                keyboardType="numeric"
+              />
+        </View>
+        <View style={styles.gpaListcontainer}>
+          <Text style={styles.gpaListText}>C</Text>
+           <TextInput
+                style={styles.gpaTextInput}
+                placeholder="Enter number of courses"
+                placeholderTextColor="grey"
+                keyboardType="numeric"
+              />
+        </View>
+        <View style={styles.gpaListcontainer}>
+          <Text style={styles.gpaListText}>C-</Text>
+           <TextInput
+                style={styles.gpaTextInput}
+                placeholder="Enter number of courses"
+                placeholderTextColor="grey"
+                keyboardType="numeric"
+              />
+        </View>
+      </View>
         {[1, 2, 3, 4].map(year => (
           <View key={year}>
             <View style={styles.yearContainer}>
@@ -123,6 +227,27 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '300',
     textAlign: 'center',
+  },
+  gpaListcontainer:{
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center',
+    marginBottom:15,
+  },
+  gpaListText:{
+    fontSize:25,
+    marginRight:40,
+  },
+  gpaTextInput:{
+    borderWidth: 1,
+    borderRadius: 20,
+    borderColor: 'white',
+    width: '20%',
+    fontSize: 12,
+    color: 'white',
+    textAlign: 'center',
+    marginRight: 20,
+
   },
   yearContainer: {
     marginTop: 5,

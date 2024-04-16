@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -9,6 +9,21 @@ import {
 } from 'react-native';
 
 const App = () => {
+  const [gradePoints, setGradePoints] = useState({
+    'A+': '',
+    'A': '',
+    'A-': '',
+    'B+': '',
+    'B': '',
+    'B-': '',
+    'C+': '',
+    'C': '',
+    'C-': '',
+    'D+': '',
+    'D': '',
+    'D-': '',
+    'E': '',
+  });
 
   const [courseCounts, setCourseCounts] = useState({
     year1: 0,
@@ -24,42 +39,73 @@ const App = () => {
     year4: [],
   });
 
-  const [Aplus, setAplus] = useState('');
-  const [A, setA] = useState('');
-  const [Amin, setAmin] = useState('');
-  const [Bplus, setBplus] = useState('');
-  const [B, setB] = useState('');
-  const [Bmin, setBmin] = useState('');
-  const [Cplus, setCplus] = useState('');
-  const [C, setC] = useState('');
-  const [Cmin, setCmin] = useState('');
-  const [Dplus, setDplus] = useState('');
-  const [D, setD] = useState('');
-  const [Dmin, setDmin] = useState('');
-  const [E, setE] = useState('');
+  const [button, setButton] = useState('');
+
+  const viewGpa = () => {
+    let totalGradePoints = 0;
+    let totalCredits = 0;
+
+    for (let year = 1; year <= 4; year++) {
+      for (let i = 0; i < courseCounts[`year${year}`]; i++) {
+        const grade = textFields[`year${year}`][i].grade;
+        const credit = textFields[`year${year}`][i].credit;
+
+        totalGradePoints += getGradePoints(grade) * credit;
+        totalCredits += credit;
+      }
+    }
+
+    const gpa = totalGradePoints / totalCredits;
+    setButton(gpa.toFixed(4));
+  };
+
+  const getGradePoints = (grade) => {
+    return gradePoints[grade] ? parseFloat(gradePoints[grade]) : 0;
+  };
+
+  const setGradePoint = (grade, value) => {
+    setGradePoints(prevGradePoints => ({
+      ...prevGradePoints,
+      [grade]: value,
+    }));
+  };
 
   const handleOkPress = (year) => {
     const fields = [];
     for (let i = 0; i < courseCounts[year]; i++) {
-      fields.push(
-        <TextInput
-          key={i}
-          style={styles.inputText}
-          placeholder={`Course ${i + 1}`}
-          placeholderTextColor="white"
-        />,
-      );
+      fields.push({
+        grade: '',
+        credit: 0,
+      });
     }
-    setTextFields(prevTextFields => ({
+    setTextFields((prevTextFields) => ({
       ...prevTextFields,
       [year]: fields,
     }));
   };
 
   const handleCountChange = (year, value) => {
-    setCourseCounts(prevCounts => ({
+    setCourseCounts((prevCounts) => ({
       ...prevCounts,
       [year]: parseInt(value) || 0,
+    }));
+  };
+
+  const handleGradeChange = (year, index, grade) => {
+    const updatedFields = [...textFields[year]];
+    updatedFields[index].grade = grade;
+    setTextFields((prevTextFields) => ({
+      ...prevTextFields,
+      [year]: updatedFields,
+    }));
+  };
+
+  const handleCreditChange = (year, index, credit) => {
+    const updatedFields = [...textFields[year]];
+    updatedFields[index].credit = parseInt(credit) || 0;
+    setTextFields((prevTextFields) => ({
+      ...prevTextFields,
+      [year]: updatedFields,
     }));
   };
 
@@ -75,119 +121,33 @@ const App = () => {
         </Text>
       </View>
       <ScrollView>
-      <View>
-        <Text style={styles.numberingText}>1.  Add Grade Points Accourding to Grades</Text>
-        <View style={styles.gpaListcontainer}>
-          <Text style={styles.gpaListText}>A+</Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholderTextColor="white"
-                keyboardType="numeric"
-                autoFocus={true}
-                onChangeText={setAplus}
-              />
-              <Text  style={styles.gpaListText}>A </Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-                onChangeText={setA}
-              />
+        <View>
+          <Text style={styles.numberingText}>
+            1. Add Grade Points According to Grades
+          </Text>
+          <View style={styles.gpaListcontainer}>
+  {Object.keys(gradePoints).map((grade, index) => (
+    <View key={index} style={styles.gradeRow}>
+      <Text style={styles.gpaListText}>{grade}</Text>
+      <TextInput
+        style={styles.gpaTextInput}
+        placeholderTextColor="white"
+        keyboardType="numeric"
+        onChangeText={value => setGradePoint(grade, value)}
+      />
+    </View>
+  ))}
+</View>
         </View>
-        <View style={styles.gpaListcontainer}>
-          <Text style={styles.gpaListText}>A -</Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-                onChangeText={setAmin}
-              />
-              <Text  style={styles.gpaListText}>B+</Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-                onChangeText={setBplus}
-              />
-        </View>
-        <View style={styles.gpaListcontainer}>
-          <Text style={styles.gpaListText}>  B</Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-                onChangeText={setB}
-              />
-              <Text  style={styles.gpaListText}> B-</Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-                onChangeText={setBmin}
-              />
-        </View>
-        <View style={styles.gpaListcontainer}>
-          <Text style={styles.gpaListText}>C+</Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-                onChangeText={setCplus}
-              />
-              <Text  style={styles.gpaListText}>C  </Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-                onChangeText={setC}
-              />
-        </View>
-        <View style={styles.gpaListcontainer}>
-          <Text style={styles.gpaListText}>C-</Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-                onChangeText={setCmin}
-              />
-              <Text  style={styles.gpaListText}>D+</Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-                onChangeText={setDplus}
-              />
-        </View>
-        <View style={styles.gpaListcontainer}>
-          <Text style={styles.gpaListText}>D</Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-                onChangeText={setD}
-              />
-              <Text  style={styles.gpaListText}>D-</Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-                onChangeText={setDmin}
-              />
-        </View>
-        <View style={styles.gpaListcontainer}>
-          <Text style={styles.gpaListText}>E</Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-                onChangeText={setE}
-              />
-        </View>
-        
-      </View>
-      <Text style={styles.numberingText}>2.  Enter your number of courses and click ok button accourding to praticular year. </Text>
-      <Text style={styles.numberingText}>After, mention the course result grade and credit value. Ex A- (2)  </Text>
-        {[1, 2, 3, 4].map(year => (
+        <Text style={styles.numberingText}>
+          2. Enter your number of courses and click OK button according to
+          particular year.
+        </Text>
+        <Text style={styles.numberingText}>
+          Afterward, mention the course result grade and credit value. Example:
+          A- (2)
+        </Text>
+        {[1, 2, 3, 4].map((year) => (
           <View key={year}>
             <View style={styles.yearContainer}>
               <Text style={styles.yearText}>For year {year}</Text>
@@ -198,9 +158,9 @@ const App = () => {
                 placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
-                onChangeText={text => handleCountChange(`year${year}`, text)}
+                onChangeText={(text) => handleCountChange(`year${year}`, text)}
               />
-              <View style={{width: 70}}>
+              <View style={{ width: 70 }}>
                 <Button
                   title="OK"
                   onPress={() => handleOkPress(`year${year}`)}
@@ -209,14 +169,33 @@ const App = () => {
             </View>
             <View style={styles.userValueContainer}>
               <ScrollView contentContainerStyle={styles.scrollViewContent}>
-                {textFields[`year${year}`]}
+                {textFields[`year${year}`]?.map((course, index) => (
+                  <View key={index}>
+                    <TextInput
+                      style={styles.inputText}
+                      placeholder={`Course ${index + 1} Grade`}
+                      placeholderTextColor="white"
+                      onChangeText={(grade) =>
+                        handleGradeChange(`year${year}`, index, grade)
+                      }
+                    />
+                    <TextInput
+                      style={styles.inputText}
+                      placeholder={`Course ${index + 1} Credit`}
+                      placeholderTextColor="white"
+                      keyboardType="numeric"
+                      onChangeText={(credit) =>
+                        handleCreditChange(`year${year}`, index, credit)
+                      }
+                    />
+                  </View>
+                ))}
               </ScrollView>
             </View>
           </View>
-          
         ))}
-        <Button title='view GPA'/>
-        <Text>your gpa is</Text>
+        <Button title="View GPA" onPress={viewGpa} />
+        <Text>Your GPA is {button}</Text>
       </ScrollView>
     </View>
   );
@@ -226,11 +205,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     margin: 10,
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'black',
   },
   topicContainer: {
     backgroundColor: 'green',
@@ -254,33 +228,36 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     textAlign: 'center',
   },
-  numberingText:{
-    fontSize:20,
-    textAlign:'center'
+  numberingText: {
+    fontSize: 20,
+    textAlign: 'center',
   },
-  gpaListcontainer:{
-    flexDirection:'row',
-    alignItems:'center',
-    justifyContent:'center',
-    marginBottom:15,
-    backgroundColor:'#f76aba',
-    height:65
+  gpaListcontainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 15,
+    backgroundColor: '#f76aba',
+    
   },
-  gpaListText:{
-    fontSize:25,
-    marginRight:10,
-    marginLeft:20,
+  gpaListText: {
+    fontSize: 25,
+    marginRight: 10,
+    marginLeft: 20,
   },
-  gpaTextInput:{
+  gradeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 15,
+  },
+  gpaTextInput: {
     borderWidth: 3,
     borderRadius: 20,
     borderColor: 'white',
-    width: '20%',
+    width: '30%',
     fontSize: 12,
     color: 'white',
     textAlign: 'center',
     marginRight: 20,
-
   },
   yearContainer: {
     marginTop: 15,
@@ -297,8 +274,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom:5,
-    marginTop:5,
+    marginBottom: 5,
+    marginTop: 5,
   },
   firstTextInput: {
     borderWidth: 2,
@@ -309,7 +286,6 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     marginRight: 30,
-    
   },
   scrollViewContent: {
     flexGrow: 1,

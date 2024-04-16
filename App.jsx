@@ -75,6 +75,7 @@ const App = () => {
       </View>
       <ScrollView>
       <View>
+        <Text style={styles.numberingText}>1.  Add Grade Points Accourding to Grades</Text>
         <View style={styles.gpaListcontainer}>
           <Text style={styles.gpaListText}>A+</Text>
            <TextInput
@@ -86,7 +87,6 @@ const App = () => {
               <Text  style={styles.gpaListText}>A </Text>
            <TextInput
                 style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
               />
@@ -95,14 +95,12 @@ const App = () => {
           <Text style={styles.gpaListText}>A -</Text>
            <TextInput
                 style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
               />
               <Text  style={styles.gpaListText}>B+</Text>
            <TextInput
                 style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
               />
@@ -111,14 +109,12 @@ const App = () => {
           <Text style={styles.gpaListText}>  B</Text>
            <TextInput
                 style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
               />
               <Text  style={styles.gpaListText}> B-</Text>
            <TextInput
                 style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
               />
@@ -127,14 +123,12 @@ const App = () => {
           <Text style={styles.gpaListText}>C+</Text>
            <TextInput
                 style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
               />
               <Text  style={styles.gpaListText}>C  </Text>
            <TextInput
                 style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
               />
@@ -143,14 +137,12 @@ const App = () => {
           <Text style={styles.gpaListText}>C-</Text>
            <TextInput
                 style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
               />
               <Text  style={styles.gpaListText}>D+</Text>
            <TextInput
                 style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
               />
@@ -159,14 +151,12 @@ const App = () => {
           <Text style={styles.gpaListText}>D</Text>
            <TextInput
                 style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
               />
               <Text  style={styles.gpaListText}>D-</Text>
            <TextInput
                 style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
               />
@@ -175,13 +165,14 @@ const App = () => {
           <Text style={styles.gpaListText}>E</Text>
            <TextInput
                 style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
               />
         </View>
         
       </View>
+      <Text style={styles.numberingText}>2.  Enter your number of courses and click ok button accourding to praticular year. </Text>
+      <Text style={styles.numberingText}>After, mention the course result grade and credit value. Ex A- (2)  </Text>
         {[1, 2, 3, 4].map(year => (
           <View key={year}>
             <View style={styles.yearContainer}>
@@ -246,6 +237,10 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     textAlign: 'center',
   },
+  numberingText:{
+    fontSize:20,
+    textAlign:'center'
+  },
   gpaListcontainer:{
     flexDirection:'row',
     alignItems:'center',
@@ -271,7 +266,7 @@ const styles = StyleSheet.create({
 
   },
   yearContainer: {
-    marginTop: 5,
+    marginTop: 15,
     marginBottom: 10,
     marginLeft: 10,
     alignItems: 'center',

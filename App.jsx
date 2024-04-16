@@ -79,9 +79,9 @@ const App = () => {
           <Text style={styles.gpaListText}>A+</Text>
            <TextInput
                 style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
-                placeholderTextColor="grey"
+                placeholderTextColor="white"
                 keyboardType="numeric"
+                autoFocus={true}
               />
               <Text  style={styles.gpaListText}>A </Text>
            <TextInput
@@ -108,30 +108,14 @@ const App = () => {
               />
         </View>
         <View style={styles.gpaListcontainer}>
-          <Text style={styles.gpaListText}>A -</Text>
+          <Text style={styles.gpaListText}>  B</Text>
            <TextInput
                 style={styles.gpaTextInput}
                 placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
               />
-              <Text  style={styles.gpaListText}>B+</Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-              />
-        </View>
-        <View style={styles.gpaListcontainer}>
-          <Text style={styles.gpaListText}>A -</Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-              />
-              <Text  style={styles.gpaListText}>B+</Text>
+              <Text  style={styles.gpaListText}> B-</Text>
            <TextInput
                 style={styles.gpaTextInput}
                 placeholder="Enter number of courses"
@@ -140,30 +124,14 @@ const App = () => {
               />
         </View>
         <View style={styles.gpaListcontainer}>
-          <Text style={styles.gpaListText}>A -</Text>
+          <Text style={styles.gpaListText}>C+</Text>
            <TextInput
                 style={styles.gpaTextInput}
                 placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
               />
-              <Text  style={styles.gpaListText}>B+</Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-              />
-        </View>
-        <View style={styles.gpaListcontainer}>
-          <Text style={styles.gpaListText}>A -</Text>
-           <TextInput
-                style={styles.gpaTextInput}
-                placeholder="Enter number of courses"
-                placeholderTextColor="grey"
-                keyboardType="numeric"
-              />
-              <Text  style={styles.gpaListText}>B+</Text>
+              <Text  style={styles.gpaListText}>C  </Text>
            <TextInput
                 style={styles.gpaTextInput}
                 placeholder="Enter number of courses"
@@ -172,14 +140,39 @@ const App = () => {
               />
         </View>
         <View style={styles.gpaListcontainer}>
-          <Text style={styles.gpaListText}>A -</Text>
+          <Text style={styles.gpaListText}>C-</Text>
            <TextInput
                 style={styles.gpaTextInput}
                 placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
               />
-              <Text  style={styles.gpaListText}>B+</Text>
+              <Text  style={styles.gpaListText}>D+</Text>
+           <TextInput
+                style={styles.gpaTextInput}
+                placeholder="Enter number of courses"
+                placeholderTextColor="grey"
+                keyboardType="numeric"
+              />
+        </View>
+        <View style={styles.gpaListcontainer}>
+          <Text style={styles.gpaListText}>D</Text>
+           <TextInput
+                style={styles.gpaTextInput}
+                placeholder="Enter number of courses"
+                placeholderTextColor="grey"
+                keyboardType="numeric"
+              />
+              <Text  style={styles.gpaListText}>D-</Text>
+           <TextInput
+                style={styles.gpaTextInput}
+                placeholder="Enter number of courses"
+                placeholderTextColor="grey"
+                keyboardType="numeric"
+              />
+        </View>
+        <View style={styles.gpaListcontainer}>
+          <Text style={styles.gpaListText}>E</Text>
            <TextInput
                 style={styles.gpaTextInput}
                 placeholder="Enter number of courses"
@@ -258,13 +251,16 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'center',
     marginBottom:15,
+    backgroundColor:'#f76aba',
+    height:65
   },
   gpaListText:{
     fontSize:25,
-    marginRight:40,
+    marginRight:10,
+    marginLeft:20,
   },
   gpaTextInput:{
-    borderWidth: 1,
+    borderWidth: 3,
     borderRadius: 20,
     borderColor: 'white',
     width: '20%',

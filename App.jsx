@@ -247,17 +247,19 @@ const styles = StyleSheet.create({
   gradeRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 15,
+    marginBottom: 10,
+    marginTop: 10,
   },
   gpaTextInput: {
     borderWidth: 3,
     borderRadius: 20,
     borderColor: 'white',
-    width: '30%',
+    width: '50%',
     fontSize: 12,
     color: 'white',
     textAlign: 'center',
-    marginRight: 20,
+    marginRight: 10,
+    marginLeft: 10,
   },
   yearContainer: {
     marginTop: 15,

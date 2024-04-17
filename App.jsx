@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 const App = () => {
+  // State variables for grade points, course counts, text fields, and GPA button
   const [gradePoints, setGradePoints] = useState({
     'A+': '',
     A: '',
@@ -42,10 +43,12 @@ const App = () => {
 
   const [button, setButton] = useState('');
 
+// Function to calculate GPA
   const viewGpa = () => {
     let totalGradePoints = 0;
     let totalCredits = 0;
 
+// Loop through each year and each course to calculate total grade points and credits
     for (let year = 1; year <= 4; year++) {
       for (let i = 0; i < courseCounts[`year${year}`]; i++) {
         const grade = textFields[`year${year}`][i].grade;
@@ -56,14 +59,17 @@ const App = () => {
       }
     }
 
+// Calculate GPA
     const gpa = totalGradePoints / totalCredits;
     setButton(gpa.toFixed(4));
   };
 
+// Function to get grade points based on grade
   const getGradePoints = grade => {
     return gradePoints[grade] ? parseFloat(gradePoints[grade]) : 0;
   };
 
+// Function to set grade points
   const setGradePoint = (grade, value) => {
     setGradePoints(prevGradePoints => ({
       ...prevGradePoints,
@@ -71,6 +77,7 @@ const App = () => {
     }));
   };
 
+// Function to handle OK button press for entering course counts
   const handleOkPress = year => {
     const fields = [];
     for (let i = 0; i < courseCounts[year]; i++) {
@@ -85,6 +92,7 @@ const App = () => {
     }));
   };
 
+// Function to handle change in course counts  
   const handleCountChange = (year, value) => {
     setCourseCounts(prevCounts => ({
       ...prevCounts,
@@ -92,6 +100,7 @@ const App = () => {
     }));
   };
 
+// Function to handle change in course grade
   const handleGradeChange = (year, index, grade) => {
     const updatedFields = [...textFields[year]];
     updatedFields[index].grade = grade;
@@ -101,6 +110,7 @@ const App = () => {
     }));
   };
 
+// Function to handle change in course credit
   const handleCreditChange = (year, index, credit) => {
     const updatedFields = [...textFields[year]];
     updatedFields[index].credit = parseInt(credit) || 0;
@@ -421,13 +431,13 @@ const styles = StyleSheet.create({
   viewGpaButton: {
     marginTop: 20,
     marginBottom: 10,
-    backgroundColor: 'green', // Change color here
-    width: 200, // Change width here
+    backgroundColor: 'green', 
+    width: 200, 
     alignSelf: 'center',
-    height: 40, // Set your desired height
-    justifyContent: 'center', // Center text vertically
-    alignItems: 'center', // Center text horizontally
-    borderRadius: 20, // Adjust border radius as needed
+    height: 40, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    borderRadius: 20,
   },
   buttonText: {
     color: 'white',

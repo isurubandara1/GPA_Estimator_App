@@ -237,7 +237,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 15,
-    backgroundColor: '#f76aba',
     
   },
   gpaListText: {
@@ -252,9 +251,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   gpaTextInput: {
-    borderWidth: 3,
-    borderRadius: 20,
-    borderColor: 'white',
+    borderWidth: 2,
+    borderRadius: 10,
+    borderColor: 'black',
     width: '50%',
     fontSize: 12,
     color: 'white',

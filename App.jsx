@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -11,18 +11,18 @@ import {
 const App = () => {
   const [gradePoints, setGradePoints] = useState({
     'A+': '',
-    'A': '',
+    A: '',
     'A-': '',
     'B+': '',
-    'B': '',
+    B: '',
     'B-': '',
     'C+': '',
-    'C': '',
+    C: '',
     'C-': '',
     'D+': '',
-    'D': '',
+    D: '',
     'D-': '',
-    'E': '',
+    E: '',
   });
 
   const [courseCounts, setCourseCounts] = useState({
@@ -59,7 +59,7 @@ const App = () => {
     setButton(gpa.toFixed(4));
   };
 
-  const getGradePoints = (grade) => {
+  const getGradePoints = grade => {
     return gradePoints[grade] ? parseFloat(gradePoints[grade]) : 0;
   };
 
@@ -70,7 +70,7 @@ const App = () => {
     }));
   };
 
-  const handleOkPress = (year) => {
+  const handleOkPress = year => {
     const fields = [];
     for (let i = 0; i < courseCounts[year]; i++) {
       fields.push({
@@ -78,14 +78,14 @@ const App = () => {
         credit: 0,
       });
     }
-    setTextFields((prevTextFields) => ({
+    setTextFields(prevTextFields => ({
       ...prevTextFields,
       [year]: fields,
     }));
   };
 
   const handleCountChange = (year, value) => {
-    setCourseCounts((prevCounts) => ({
+    setCourseCounts(prevCounts => ({
       ...prevCounts,
       [year]: parseInt(value) || 0,
     }));
@@ -94,7 +94,7 @@ const App = () => {
   const handleGradeChange = (year, index, grade) => {
     const updatedFields = [...textFields[year]];
     updatedFields[index].grade = grade;
-    setTextFields((prevTextFields) => ({
+    setTextFields(prevTextFields => ({
       ...prevTextFields,
       [year]: updatedFields,
     }));
@@ -103,7 +103,7 @@ const App = () => {
   const handleCreditChange = (year, index, credit) => {
     const updatedFields = [...textFields[year]];
     updatedFields[index].credit = parseInt(credit) || 0;
-    setTextFields((prevTextFields) => ({
+    setTextFields(prevTextFields => ({
       ...prevTextFields,
       [year]: updatedFields,
     }));
@@ -126,18 +126,117 @@ const App = () => {
             1. Add Grade Points According to Grades
           </Text>
           <View style={styles.gpaListcontainer}>
-  {Object.keys(gradePoints).map((grade, index) => (
-    <View key={index} style={styles.gradeRow}>
-      <Text style={styles.gpaListText}>{grade}</Text>
-      <TextInput
-        style={styles.gpaTextInput}
-        placeholderTextColor="white"
-        keyboardType="numeric"
-        onChangeText={value => setGradePoint(grade, value)}
-      />
-    </View>
-  ))}
+  <View style={styles.gradeRow}>
+    <Text style={[styles.gpaListText, styles.gradeListTitle]}>Grade</Text>
+    <Text style={[styles.gpaListText, styles.gradeListTitle]}>Grade Points</Text>
+  </View>
+  <View style={styles.gradeRow}>
+    <Text style={styles.gpaListText}>A+</Text>
+    <TextInput
+      style={styles.gpaTextInput}
+      placeholderTextColor="white"
+      keyboardType="numeric"
+      onChangeText={value => setGradePoint('A+', value)}
+    />
+    <Text style={styles.gpaListText}>A</Text>
+    <TextInput
+      style={styles.gpaTextInput}
+      placeholderTextColor="white"
+      keyboardType="numeric"
+      onChangeText={value => setGradePoint('A', value)}
+    />
+  </View>
+  <View style={styles.gradeRow}>
+    <Text style={styles.gpaListText}>A-</Text>
+    <TextInput
+      style={styles.gpaTextInput}
+      placeholderTextColor="white"
+      keyboardType="numeric"
+      onChangeText={value => setGradePoint('A-', value)}
+    />
+    <Text style={styles.gpaListText}>B+</Text>
+    <TextInput
+      style={styles.gpaTextInput}
+      placeholderTextColor="white"
+      keyboardType="numeric"
+      onChangeText={value => setGradePoint('B+', value)}
+    />
+  </View>
+  <View style={styles.gradeRow}>
+    <Text style={styles.gpaListText}>B</Text>
+    <TextInput
+      style={styles.gpaTextInput}
+      placeholderTextColor="white"
+      keyboardType="numeric"
+      onChangeText={value => setGradePoint('B', value)}
+    />
+    <Text style={styles.gpaListText}>B-</Text>
+    <TextInput
+      style={styles.gpaTextInput}
+      placeholderTextColor="white"
+      keyboardType="numeric"
+      onChangeText={value => setGradePoint('B-', value)}
+    />
+  </View>
+  <View style={styles.gradeRow}>
+    <Text style={styles.gpaListText}>C+</Text>
+    <TextInput
+      style={styles.gpaTextInput}
+      placeholderTextColor="white"
+      keyboardType="numeric"
+      onChangeText={value => setGradePoint('C+', value)}
+    />
+    <Text style={styles.gpaListText}>C</Text>
+    <TextInput
+      style={styles.gpaTextInput}
+      placeholderTextColor="white"
+      keyboardType="numeric"
+      onChangeText={value => setGradePoint('C', value)}
+    />
+  </View>
+  <View style={styles.gradeRow}>
+    <Text style={styles.gpaListText}>C-</Text>
+    <TextInput
+      style={styles.gpaTextInput}
+      placeholderTextColor="white"
+      keyboardType="numeric"
+      onChangeText={value => setGradePoint('C-', value)}
+    />
+    <Text style={styles.gpaListText}>D+</Text>
+    <TextInput
+      style={styles.gpaTextInput}
+      placeholderTextColor="white"
+      keyboardType="numeric"
+      onChangeText={value => setGradePoint('D+', value)}
+    />
+  </View>
+  <View style={styles.gradeRow}>
+    <Text style={styles.gpaListText}>D</Text>
+    <TextInput
+      style={styles.gpaTextInput}
+      placeholderTextColor="white"
+      keyboardType="numeric"
+      onChangeText={value => setGradePoint('D', value)}
+    />
+    <Text style={styles.gpaListText}>D-</Text>
+    <TextInput
+      style={styles.gpaTextInput}
+      placeholderTextColor="white"
+      keyboardType="numeric"
+      onChangeText={value => setGradePoint('D-', value)}
+    />
+  </View>
+  <View style={styles.gradeRow}>
+    <Text style={styles.gpaListText}>E</Text>
+    <TextInput
+      style={styles.gpaTextInput}
+      placeholderTextColor="white"
+      keyboardType="numeric"
+      onChangeText={value => setGradePoint('E', value)}
+    />
+  </View>
 </View>
+
         </View>
         <Text style={styles.numberingText}>
           2. Enter your number of courses and click OK button according to
@@ -147,7 +246,7 @@ const App = () => {
           Afterward, mention the course result grade and credit value. Example:
           A- (2)
         </Text>
-        {[1, 2, 3, 4].map((year) => (
+        {[1, 2, 3, 4].map(year => (
           <View key={year}>
             <View style={styles.yearContainer}>
               <Text style={styles.yearText}>For year {year}</Text>
@@ -158,9 +257,9 @@ const App = () => {
                 placeholder="Enter number of courses"
                 placeholderTextColor="grey"
                 keyboardType="numeric"
-                onChangeText={(text) => handleCountChange(`year${year}`, text)}
+                onChangeText={text => handleCountChange(`year${year}`, text)}
               />
-              <View style={{ width: 70 }}>
+              <View style={{width: 70}}>
                 <Button
                   title="OK"
                   onPress={() => handleOkPress(`year${year}`)}
@@ -168,30 +267,29 @@ const App = () => {
               </View>
             </View>
             <View style={styles.userValueContainer}>
-            <ScrollView contentContainerStyle={styles.scrollViewContent}>
-  {textFields[`year${year}`]?.map((course, index) => (
-    <View key={index} style={styles.rowContainer}>
-      <TextInput
-        style={[styles.inputText, styles.gradeInput]}
-        placeholder={`Course ${index + 1} Grade`}
-        placeholderTextColor="white"
-        onChangeText={(grade) =>
-          handleGradeChange(`year${year}`, index, grade)
-        }
-      />
-      <TextInput
-        style={[styles.inputText, styles.creditInput]}
-        placeholder={`Course ${index + 1} Credit`}
-        placeholderTextColor="white"
-        keyboardType="numeric"
-        onChangeText={(credit) =>
-          handleCreditChange(`year${year}`, index, credit)
-        }
-      />
-    </View>
-  ))}
-</ScrollView>
-
+              <ScrollView contentContainerStyle={styles.scrollViewContent}>
+                {textFields[`year${year}`]?.map((course, index) => (
+                  <View key={index} style={styles.rowContainer}>
+                    <TextInput
+                      style={[styles.inputText, styles.gradeInput]}
+                      placeholder={`Course ${index + 1} Grade`}
+                      placeholderTextColor="white"
+                      onChangeText={grade =>
+                        handleGradeChange(`year${year}`, index, grade)
+                      }
+                    />
+                    <TextInput
+                      style={[styles.inputText, styles.creditInput]}
+                      placeholder={`Course ${index + 1} Credit`}
+                      placeholderTextColor="white"
+                      keyboardType="numeric"
+                      onChangeText={credit =>
+                        handleCreditChange(`year${year}`, index, credit)
+                      }
+                    />
+                  </View>
+                ))}
+              </ScrollView>
             </View>
           </View>
         ))}
@@ -236,9 +334,13 @@ const styles = StyleSheet.create({
   gpaListcontainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 15,
-    
+    marginBottom: 10,
   },
+  gradeListTitle: {
+    fontWeight: 'bold',
+    marginRight: 10,
+  },
+  
   gpaListText: {
     fontSize: 25,
     marginRight: 10,
@@ -273,7 +375,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 5,
   },
-  
+
   yearContainer: {
     marginTop: 15,
     marginBottom: 10,
@@ -303,7 +405,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
   },
   scrollViewContent: {
-    flexGrow:1,
+    flexGrow: 1,
   },
   inputText: {
     borderWidth: 1,

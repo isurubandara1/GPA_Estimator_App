@@ -168,29 +168,30 @@ const App = () => {
               </View>
             </View>
             <View style={styles.userValueContainer}>
-              <ScrollView contentContainerStyle={styles.scrollViewContent}>
-                {textFields[`year${year}`]?.map((course, index) => (
-                  <View key={index}>
-                    <TextInput
-                      style={styles.inputText}
-                      placeholder={`Course ${index + 1} Grade`}
-                      placeholderTextColor="white"
-                      onChangeText={(grade) =>
-                        handleGradeChange(`year${year}`, index, grade)
-                      }
-                    />
-                    <TextInput
-                      style={styles.inputText}
-                      placeholder={`Course ${index + 1} Credit`}
-                      placeholderTextColor="white"
-                      keyboardType="numeric"
-                      onChangeText={(credit) =>
-                        handleCreditChange(`year${year}`, index, credit)
-                      }
-                    />
-                  </View>
-                ))}
-              </ScrollView>
+            <ScrollView contentContainerStyle={styles.scrollViewContent}>
+  {textFields[`year${year}`]?.map((course, index) => (
+    <View key={index} style={styles.rowContainer}>
+      <TextInput
+        style={[styles.inputText, styles.gradeInput]}
+        placeholder={`Course ${index + 1} Grade`}
+        placeholderTextColor="white"
+        onChangeText={(grade) =>
+          handleGradeChange(`year${year}`, index, grade)
+        }
+      />
+      <TextInput
+        style={[styles.inputText, styles.creditInput]}
+        placeholder={`Course ${index + 1} Credit`}
+        placeholderTextColor="white"
+        keyboardType="numeric"
+        onChangeText={(credit) =>
+          handleCreditChange(`year${year}`, index, credit)
+        }
+      />
+    </View>
+  ))}
+</ScrollView>
+
             </View>
           </View>
         ))}
@@ -261,6 +262,19 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginLeft: 10,
   },
+  rowContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  gradeInput: {
+    flex: 1,
+    marginRight: 5,
+  },
+  creditInput: {
+    flex: 1,
+    marginLeft: 5,
+  },
+  
   yearContainer: {
     marginTop: 15,
     marginBottom: 10,
@@ -290,7 +304,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
   },
   scrollViewContent: {
-    flexGrow: 1,
+    flexGrow:1,
   },
   inputText: {
     borderWidth: 1,

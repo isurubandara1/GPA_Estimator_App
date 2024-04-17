@@ -6,6 +6,7 @@ import {
   View,
   Button,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 
 const App = () => {
@@ -126,125 +127,115 @@ const App = () => {
             1. Add Grade Points According to Grades
           </Text>
           <View style={styles.gpaListcontainer}>
-  <View style={styles.gradeRow}>
-    <Text style={[styles.gpaListText, styles.gradeListTitle]}>Grade</Text>
-    <Text style={[styles.gpaListText, styles.gradeListTitle]}>Grade Points</Text>
-  </View>
-  <View style={styles.gradeRow}>
-    <Text style={styles.gpaListText}>A+</Text>
-    <TextInput
-      style={styles.gpaTextInput}
-      placeholderTextColor="white"
-      keyboardType="numeric"
-      onChangeText={value => setGradePoint('A+', value)}
-    />
-    <Text style={styles.gpaListText}>A</Text>
-    <TextInput
-      style={styles.gpaTextInput}
-      placeholderTextColor="white"
-      keyboardType="numeric"
-      onChangeText={value => setGradePoint('A', value)}
-    />
-  </View>
-  <View style={styles.gradeRow}>
-    <Text style={styles.gpaListText}>A-</Text>
-    <TextInput
-      style={styles.gpaTextInput}
-      placeholderTextColor="white"
-      keyboardType="numeric"
-      onChangeText={value => setGradePoint('A-', value)}
-    />
-    <Text style={styles.gpaListText}>B+</Text>
-    <TextInput
-      style={styles.gpaTextInput}
-      placeholderTextColor="white"
-      keyboardType="numeric"
-      onChangeText={value => setGradePoint('B+', value)}
-    />
-  </View>
-  <View style={styles.gradeRow}>
-    <Text style={styles.gpaListText}>B</Text>
-    <TextInput
-      style={styles.gpaTextInput}
-      placeholderTextColor="white"
-      keyboardType="numeric"
-      onChangeText={value => setGradePoint('B', value)}
-    />
-    <Text style={styles.gpaListText}>B-</Text>
-    <TextInput
-      style={styles.gpaTextInput}
-      placeholderTextColor="white"
-      keyboardType="numeric"
-      onChangeText={value => setGradePoint('B-', value)}
-    />
-  </View>
-  <View style={styles.gradeRow}>
-    <Text style={styles.gpaListText}>C+</Text>
-    <TextInput
-      style={styles.gpaTextInput}
-      placeholderTextColor="white"
-      keyboardType="numeric"
-      onChangeText={value => setGradePoint('C+', value)}
-    />
-    <Text style={styles.gpaListText}>C</Text>
-    <TextInput
-      style={styles.gpaTextInput}
-      placeholderTextColor="white"
-      keyboardType="numeric"
-      onChangeText={value => setGradePoint('C', value)}
-    />
-  </View>
-  <View style={styles.gradeRow}>
-    <Text style={styles.gpaListText}>C-</Text>
-    <TextInput
-      style={styles.gpaTextInput}
-      placeholderTextColor="white"
-      keyboardType="numeric"
-      onChangeText={value => setGradePoint('C-', value)}
-    />
-    <Text style={styles.gpaListText}>D+</Text>
-    <TextInput
-      style={styles.gpaTextInput}
-      placeholderTextColor="white"
-      keyboardType="numeric"
-      onChangeText={value => setGradePoint('D+', value)}
-    />
-  </View>
-  <View style={styles.gradeRow}>
-    <Text style={styles.gpaListText}>D</Text>
-    <TextInput
-      style={styles.gpaTextInput}
-      placeholderTextColor="white"
-      keyboardType="numeric"
-      onChangeText={value => setGradePoint('D', value)}
-    />
-    <Text style={styles.gpaListText}>D-</Text>
-    <TextInput
-      style={styles.gpaTextInput}
-      placeholderTextColor="white"
-      keyboardType="numeric"
-      onChangeText={value => setGradePoint('D-', value)}
-    />
-  </View>
-  <View style={styles.gradeRow}>
-    <Text style={styles.gpaListText}>E</Text>
-    <TextInput
-      style={styles.gpaTextInput}
-      placeholderTextColor="white"
-      keyboardType="numeric"
-      onChangeText={value => setGradePoint('E', value)}
-    />
-  </View>
-</View>
-
+            <View style={styles.gradeRow}>
+              <Text style={styles.gpaListText}>A+</Text>
+              <TextInput
+                style={styles.gpaTextInput}
+                placeholderTextColor="white"
+                keyboardType="numeric"
+                onChangeText={value => setGradePoint('A+', value)}
+              />
+              <Text style={styles.gpaListText}>A </Text>
+              <TextInput
+                style={styles.gpaTextInput}
+                placeholderTextColor="white"
+                keyboardType="numeric"
+                onChangeText={value => setGradePoint('A', value)}
+              />
+            </View>
+            <View style={styles.gradeRow}>
+              <Text style={styles.gpaListText}>A- </Text>
+              <TextInput
+                style={styles.gpaTextInput}
+                placeholderTextColor="white"
+                keyboardType="numeric"
+                onChangeText={value => setGradePoint('A-', value)}
+              />
+              <Text style={styles.gpaListText}>B+</Text>
+              <TextInput
+                style={styles.gpaTextInput}
+                placeholderTextColor="white"
+                keyboardType="numeric"
+                onChangeText={value => setGradePoint('B+', value)}
+              />
+            </View>
+            <View style={styles.gradeRow}>
+              <Text style={styles.gpaListText}>B </Text>
+              <TextInput
+                style={styles.gpaTextInput}
+                placeholderTextColor="white"
+                keyboardType="numeric"
+                onChangeText={value => setGradePoint('B', value)}
+              />
+              <Text style={styles.gpaListText}>B-</Text>
+              <TextInput
+                style={styles.gpaTextInput}
+                placeholderTextColor="white"
+                keyboardType="numeric"
+                onChangeText={value => setGradePoint('B-', value)}
+              />
+            </View>
+            <View style={styles.gradeRow}>
+              <Text style={styles.gpaListText}>C+</Text>
+              <TextInput
+                style={styles.gpaTextInput}
+                placeholderTextColor="white"
+                keyboardType="numeric"
+                onChangeText={value => setGradePoint('C+', value)}
+              />
+              <Text style={styles.gpaListText}>C </Text>
+              <TextInput
+                style={styles.gpaTextInput}
+                placeholderTextColor="white"
+                keyboardType="numeric"
+                onChangeText={value => setGradePoint('C', value)}
+              />
+            </View>
+            <View style={styles.gradeRow}>
+              <Text style={styles.gpaListText}>C- </Text>
+              <TextInput
+                style={styles.gpaTextInput}
+                placeholderTextColor="white"
+                keyboardType="numeric"
+                onChangeText={value => setGradePoint('C-', value)}
+              />
+              <Text style={styles.gpaListText}>D+</Text>
+              <TextInput
+                style={styles.gpaTextInput}
+                placeholderTextColor="white"
+                keyboardType="numeric"
+                onChangeText={value => setGradePoint('D+', value)}
+              />
+            </View>
+            <View style={styles.gradeRow}>
+              <Text style={styles.gpaListText}>D </Text>
+              <TextInput
+                style={styles.gpaTextInput}
+                placeholderTextColor="white"
+                keyboardType="numeric"
+                onChangeText={value => setGradePoint('D', value)}
+              />
+              <Text style={styles.gpaListText}>D-</Text>
+              <TextInput
+                style={styles.gpaTextInput}
+                placeholderTextColor="white"
+                keyboardType="numeric"
+                onChangeText={value => setGradePoint('D-', value)}
+              />
+            </View>
+            <View style={styles.gradeRow}>
+              <Text style={styles.gpaListText}>E</Text>
+              <TextInput
+                style={styles.gpaTextInput}
+                placeholderTextColor="white"
+                keyboardType="numeric"
+                onChangeText={value => setGradePoint('E', value)}
+              />
+            </View>
+          </View>
         </View>
         <Text style={styles.numberingText}>
-          2. Enter your number of courses and click OK button according to
-          particular year.
-        </Text>
-        <Text style={styles.numberingText}>
-          Afterward, mention the course result grade and credit value. Example:
-          A- (2)
+          2. Enter number of courses and click OK button for some year
         </Text>
         {[1, 2, 3, 4].map(year => (
           <View key={year}>
@@ -293,8 +284,11 @@ const App = () => {
             </View>
           </View>
         ))}
-        <Button title="View GPA" onPress={viewGpa} />
-        <Text>Your GPA is {button}</Text>
+        <TouchableOpacity style={styles.viewGpaButton} onPress={viewGpa}>
+          <Text style={styles.buttonText}>View GPA</Text>
+        </TouchableOpacity>
+
+        <Text style={styles.gpaText}>Your GPA is {button}</Text>
       </ScrollView>
     </View>
   );
@@ -328,19 +322,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   numberingText: {
+    marginTop: 20,
     fontSize: 20,
     textAlign: 'center',
+    fontStyle: 'italic',
+    fontWeight: 'bold',
   },
   gpaListcontainer: {
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 10,
   },
-  gradeListTitle: {
-    fontWeight: 'bold',
-    marginRight: 10,
-  },
-  
   gpaListText: {
     fontSize: 25,
     marginRight: 10,
@@ -356,12 +348,12 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     borderColor: 'black',
-    width: '50%',
+    width: '20%',
     fontSize: 12,
     color: 'white',
     textAlign: 'center',
     marginRight: 10,
-    marginLeft: 10,
+    marginLeft: 5,
   },
   rowContainer: {
     flexDirection: 'row',
@@ -412,6 +404,35 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 10,
     marginBottom: 10,
+  },
+  viewGpaButton: {
+    marginTop: 20,
+    marginBottom: 10,
+    backgroundColor: '',
+    width: '0%',
+    alignSelf: 'center',
+  },
+  gpaText: {
+    fontSize: 20,
+    textAlign: 'center',
+    marginTop: 10,
+    color:'white',
+  },
+  viewGpaButton: {
+    marginTop: 20,
+    marginBottom: 10,
+    backgroundColor: 'green', // Change color here
+    width: 200, // Change width here
+    alignSelf: 'center',
+    height: 40, // Set your desired height
+    justifyContent: 'center', // Center text vertically
+    alignItems: 'center', // Center text horizontally
+    borderRadius: 20, // Adjust border radius as needed
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 

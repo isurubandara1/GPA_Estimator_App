@@ -256,7 +256,7 @@ const App = () => {
               <TextInput
                 style={styles.firstTextInput}
                 placeholder="Enter number of courses"
-                placeholderTextColor="grey"
+                placeholderTextColor="black"
                 keyboardType="numeric"
                 onChangeText={text => handleCountChange(`year${year}`, text)}
               />
@@ -274,7 +274,7 @@ const App = () => {
                     <TextInput
                       style={[styles.inputText, styles.gradeInput]}
                       placeholder={`Course ${index + 1} Grade`}
-                      placeholderTextColor="white"
+                      placeholderTextColor="black"
                       onChangeText={grade =>
                         handleGradeChange(`year${year}`, index, grade)
                       }
@@ -282,7 +282,7 @@ const App = () => {
                     <TextInput
                       style={[styles.inputText, styles.creditInput]}
                       placeholder={`Course ${index + 1} Credit`}
-                      placeholderTextColor="white"
+                      placeholderTextColor="black"
                       keyboardType="numeric"
                       onChangeText={credit =>
                         handleCreditChange(`year${year}`, index, credit)
@@ -304,6 +304,7 @@ const App = () => {
   );
 };
 
+//style
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -359,8 +360,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: 'black',
     width: '20%',
-    fontSize: 12,
-    color: 'white',
+    fontSize: 20,
+    fontWeight:"500",
+    color: 'black',
     textAlign: 'center',
     marginRight: 10,
     marginLeft: 5,
@@ -387,7 +389,8 @@ const styles = StyleSheet.create({
   yearText: {
     fontSize: 25,
     fontStyle: 'italic',
-    color: 'yellow',
+    color: 'green',
+    fontWeight:"bold",
   },
   userValueContainer: {
     alignItems: 'center',
@@ -399,10 +402,10 @@ const styles = StyleSheet.create({
   firstTextInput: {
     borderWidth: 2,
     borderRadius: 5,
-    borderColor: 'white',
+    borderColor: 'black',
     width: '30%',
     fontSize: 15,
-    color: 'white',
+    color:'black',
     textAlign: 'center',
     marginRight: 30,
   },
@@ -414,6 +417,7 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 10,
     marginBottom: 10,
+    
   },
   viewGpaButton: {
     marginTop: 20,
@@ -426,7 +430,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     marginTop: 10,
-    color:'white',
+    
   },
   viewGpaButton: {
     marginTop: 20,

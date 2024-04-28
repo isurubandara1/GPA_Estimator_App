@@ -7,6 +7,7 @@ import {
   Button,
   ScrollView,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 
 const App = () => {
@@ -121,7 +122,7 @@ const App = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.topicContainer}>
         <Text style={styles.topic}>GPA ESTIMATOR</Text>
       </View>
@@ -255,7 +256,6 @@ const App = () => {
             <View style={styles.userValueContainer}>
               <TextInput
                 style={styles.firstTextInput}
-                placeholder="Enter number of courses"
                 placeholderTextColor="black"
                 keyboardType="numeric"
                 onChangeText={text => handleCountChange(`year${year}`, text)}
@@ -300,7 +300,7 @@ const App = () => {
 
         <Text style={styles.gpaText}>Your GPA is {button}</Text>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -308,10 +308,10 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 10,
+    backgroundColor: '#B3D7E5',
   },
   topicContainer: {
-    backgroundColor: 'green',
+    backgroundColor: '#0693E3',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
@@ -329,8 +329,9 @@ const styles = StyleSheet.create({
   },
   firstSentence: {
     fontSize: 20,
-    fontWeight: '300',
+    fontWeight: '500',
     textAlign: 'center',
+    color:"black",
   },
   numberingText: {
     marginTop: 20,
@@ -338,6 +339,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontStyle: 'italic',
     fontWeight: 'bold',
+    color:"black",
   },
   gpaListcontainer: {
     alignItems: 'center',
@@ -370,6 +372,8 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingLeft:10,
+    paddingRight:10,
   },
   gradeInput: {
     flex: 1,
@@ -389,7 +393,7 @@ const styles = StyleSheet.create({
   yearText: {
     fontSize: 25,
     fontStyle: 'italic',
-    color: 'green',
+    color: '#0693E3',
     fontWeight:"bold",
   },
   userValueContainer: {
@@ -427,15 +431,18 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   gpaText: {
-    fontSize: 20,
+    fontSize: 25,
     textAlign: 'center',
     marginTop: 10,
+    marginBottom: 10,
+    fontWeight:"700",
+    color:"black",
     
   },
   viewGpaButton: {
     marginTop: 20,
     marginBottom: 10,
-    backgroundColor: 'green', 
+    backgroundColor:"#0693E3", 
     width: 200, 
     alignSelf: 'center',
     height: 40, 
